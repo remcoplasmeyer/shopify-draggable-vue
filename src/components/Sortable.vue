@@ -97,7 +97,6 @@ export default {
   watch: {
     enabled(val) {
       if (val) {
-        console.log('reeanbling');
         this.breakdown();
         this.init();
       }
@@ -165,7 +164,6 @@ export default {
       if (event.sourceContainer !== this.$el) {
         return;
       }
-      // console.log(`setting source`, JSON.stringify(this.value), this.$el);
 
       const oldIndex = this.index(event.source);
 
@@ -222,7 +220,6 @@ export default {
       const children = this.getDraggableElementsForContainer(overContainer);
       const over = children[event.source._source.oldIndex];
 
-      // console.log('outMove', over)
       move({
         source, over, overContainer, children,
       });
