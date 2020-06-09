@@ -6,8 +6,10 @@ import Sortable from './components/Sortable.vue';
 import SortableItem from './components/SortableItem.vue';
 import DraggableComponent from './components/Draggable.vue';
 
-const VuePlugin = {};
+// draggable api: https://github.com/Shopify/draggable/issues/372
+delete Draggable.Plugins.Focusable;
 
+const VuePlugin = {};
 VuePlugin.install = function install(_Vue) {
   const Vue = _Vue;
   const draggableClass = 'draggable-item';
@@ -17,7 +19,7 @@ VuePlugin.install = function install(_Vue) {
   Vue.prototype.$draggable = new Draggable([], {
     draggableClass,
     dragHandleClass,
-    delay: 200,
+    delay: 50,
     tresholdDistance: 2,
     draggable: `.${draggableClass}`,
     handle: `.${dragHandleClass}`,
@@ -25,6 +27,7 @@ VuePlugin.install = function install(_Vue) {
     mirror: {
       constrainDimensions: true,
     },
+    appendTo: 'body',
     scrollable: {
       speed: 20,
       sensitivity: 80,
@@ -34,8 +37,10 @@ VuePlugin.install = function install(_Vue) {
     //   easingFunction: "ease-in-out",
     //   horizontal: false
     // },
-    // plugins: []
+    plugins: [],
   });
+
+  Vue.prototype.$draggable.removePlugin(Draggable.Plugins.Focusable);
 
   Vue.directive('DragHandle', {
     inserted(el) {

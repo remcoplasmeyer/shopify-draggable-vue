@@ -2,18 +2,20 @@
   <div class="page main">
     <div class="container">
       <h1>Dropzone (check console log)</h1>
-      <dropzone
-        :data="{ holder }"
-        @enter="onEnter($event)"
-        @leave="onLeave($event)"
-        group="first_group"
-      >
-        <template #default="scope">
-          <div :class="scope" class="dropzone">
-            <div class="">This is a dropzone</div>
-          </div>
-        </template>
-      </dropzone>
+      <div>
+        <dropzone
+          :data="{ holder }"
+          @enter="onEnter($event)"
+          @leave="onLeave($event)"
+          group="first_group"
+        >
+          <template #default="scope">
+            <div :class="scope" class="dropzone">
+              <div class="">This is a dropzone</div>
+            </div>
+          </template>
+        </dropzone>
+      </div>
 
       <draggable
         :with-handle="true"
@@ -23,7 +25,6 @@
       >
         <div class="draggable">draggable item</div>
       </draggable>
-
 
       <h1>Sortable & SortableItem</h1>
       <sortable v-model="groups" group="columns">
@@ -126,7 +127,6 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
   }
 
   .page:nth-child(2n) {

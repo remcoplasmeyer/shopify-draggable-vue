@@ -88,6 +88,11 @@ export default {
       default: true,
     },
   },
+  data() {
+    return {
+      initDone: false,
+    };
+  },
   mounted() {
     this.init();
   },
@@ -97,14 +102,16 @@ export default {
   watch: {
     enabled(val) {
       if (val) {
-        this.breakdown();
         this.init();
+      } else {
+        this.breakdown();
       }
     },
   },
   methods: {
     init() {
-      if (this.enabled) {
+      if (this.enabled && !this.initDone) {
+        this.initDone = true;
         this.$draggable.addContainer(this.$el);
         this.$draggable
           .on('drag:start', this.onDragStart)
@@ -117,13 +124,16 @@ export default {
       }
     },
     breakdown() {
-      this.$draggable.removeContainer(this.$el);
-      this.$draggable
-        .off('drag:start', this.onDragStart)
-        .off('drag:over:container', this.onDragOverContainer)
-        .off('drag:out:container', this.onDragOutContainer)
-        .off('drag:over', this.onDragOver)
-        .off('drag:stop', this.onDragStop);
+      if (this.initDone) {
+        this.$draggable.removeContainer(this.$el);
+        this.$draggable
+          .off('drag:start', this.onDragStart)
+          .off('drag:over:container', this.onDragOverContainer)
+          .off('drag:out:container', this.onDragOutContainer)
+          .off('drag:over', this.onDragOver)
+          .off('drag:stop', this.onDragStop);
+        this.initDone = false;
+      }
     },
     shouldIgnore(e) {
       if (e.oldComponent.group !== this.group) {
