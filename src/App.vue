@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 <template>
   <div class="page main">
     <div class="container">
@@ -72,13 +73,13 @@ export default {
   }),
   methods: {
     onEnter(event) {
-      console.log(event);
+      // console.log(event);
     },
     onLeave(event) {
-      console.log(event);
+      // console.log(event);
     },
     onDrop(event) {
-      console.log(event);
+      // console.log(event);
     },
   },
   watch: {

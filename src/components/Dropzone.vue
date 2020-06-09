@@ -14,7 +14,6 @@ export default {
       .on('drag:stop', this.onDragStop);
   },
   destroyed() {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     this.$draggable.off('vue:drag:start', this.onDragStart)
       .off('drag:move', this.onDragMove)
       .off('drag:stop', this.onDragStop);
