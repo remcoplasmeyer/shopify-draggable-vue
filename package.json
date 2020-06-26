@@ -1,13 +1,14 @@
 {
   "name": "@hipsjs/shopify-draggable-vue",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Shopify draggable for Vue",
-  "main": "./src/index.js",
+  "main": "./dist/lib/ShopifyDraggablePlugin.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:all": "npm run build:demo && npm run build:demo",
     "build:demo": "vue-cli-service build --dest dist/demo",
     "build:lib": "vue-cli-service build --target lib --dest dist/lib --name ShopifyDraggablePlugin 'src/index.js'",
+    "build:lib:dev": "vue-cli-service build --target lib --dest dist/lib --name ShopifyDraggablePlugin 'src/index.js' --watch --mode development",
     "lint": "npx eslint --ext .js,.vue src *.js",
     "release": "bash scripts/release.sh"
   },

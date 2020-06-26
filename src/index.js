@@ -1,5 +1,3 @@
-// const { Draggable } = require("@shopify/draggable");
-// import wtf from "@shopify/draggable";
 import { Draggable } from '@shopify/draggable';
 import Dropzone from './components/Dropzone.vue';
 import Sortable from './components/Sortable.vue';
@@ -10,16 +8,17 @@ import DraggableComponent from './components/Draggable.vue';
 delete Draggable.Plugins.Focusable;
 
 const VuePlugin = {};
-VuePlugin.install = function install(_Vue) {
+VuePlugin.install = function install(_Vue, options = {}) {
   const Vue = _Vue;
   const draggableClass = 'draggable-item';
   const dragHandleClass = 'drag-handle';
   const ignoreHandleClassList = ['drag-ignore-handle', 'scrollable'];
 
-  Vue.prototype.$draggable = new Draggable([], {
+  const defaultOpts = {
     draggableClass,
     dragHandleClass,
-    delay: 50,
+    delay: 150,
+    distance: 0,
     tresholdDistance: 2,
     draggable: `.${draggableClass}`,
     handle: `.${dragHandleClass}`,
@@ -32,12 +31,12 @@ VuePlugin.install = function install(_Vue) {
       speed: 20,
       sensitivity: 80,
     },
-    // swapAnimation: {
-    //   duration: 300,
-    //   easingFunction: "ease-in-out",
-    //   horizontal: false
-    // },
     plugins: [],
+  };
+
+  Vue.prototype.$draggable = new Draggable([], {
+    ...defaultOpts,
+    options,
   });
 
   Vue.prototype.$draggable.removePlugin(Draggable.Plugins.Focusable);
