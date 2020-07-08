@@ -1,6 +1,6 @@
 {
   "name": "@hipsjs/shopify-draggable-vue",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Shopify draggable for Vue",
   "main": "./dist/lib/ShopifyDraggablePlugin.common.js",
   "scripts": {
