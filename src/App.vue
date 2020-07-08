@@ -72,15 +72,15 @@ export default {
       }],
   }),
   methods: {
-    onEnter(event) {
-      // console.log(event);
-    },
-    onLeave(event) {
-      // console.log(event);
-    },
-    onDrop(event) {
-      // console.log(event);
-    },
+    // onEnter(event) {
+    //   // console.log(event);
+    // },
+    // onLeave(event) {
+    //   // console.log(event);
+    // },
+    // onDrop(event) {
+    //   // console.log(event);
+    // },
   },
   watch: {
 

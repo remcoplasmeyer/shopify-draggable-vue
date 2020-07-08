@@ -36,7 +36,7 @@ VuePlugin.install = function install(_Vue, options = {}) {
 
   Vue.prototype.$draggable = new Draggable([], {
     ...defaultOpts,
-    options,
+    ...options,
   });
 
   Vue.prototype.$draggable.removePlugin(Draggable.Plugins.Focusable);
